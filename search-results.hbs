@@ -1,0 +1,14 @@
+{{#each results}}
+	{{#ifCond this.type '==' 'group'}}
+		<a href="#/groups{{this.plural}}" data-label="{{this.name}}">{{this.name}}</a>
+	{{/ifCond}}
+	{{#ifCond this.type '==' 'label'}}
+		<a href="#/feed/filter/{{concatPlus this.labels}}" data-label="{{concat this.labels}}">
+			{{#each this.labels}}<span class="label">{{this}}</span> {{/each}}
+		</a>
+	{{/ifCond}}
+	{{#ifCond this.type '==' 'user'}}
+		<a href="#/users/{{this.username}}" data-label="@{{this.username}}">@{{this.username}}</a>
+	{{/ifCond}}
+{{/each}}
+<a href="#/search/posts/{{replacePlus keyword}}" class="more">more results</a>
